@@ -30,11 +30,19 @@ lines.forEach((line, index) => {
     }
 
     let varName = line[0].trim();
+
+    if(!varName || varName.trim() == '') {
+        return;
+    }
+
     varName = varName.replace(' ', '_');
     let value = line[2];
     if(value) {
-
         value = value.replace('~', ',').trim();
+    }
+    const type = line[1];
+    if(type == 'image' && (!value || value.trim() == '')) {
+        value = 'images/blank.png';
     }
 
     output += `{
