@@ -1,0 +1,15 @@
+name ,type,value,,rlVarName,main_rl,_
+animation_toggle,text,FALSE,,richloadName,appfolio_master_300x250_rl,_
+headline_txt,text,,,clicktagCount,2,_
+headlineTxt_size_hex_xy,text,,,basefileName,appfolioDCO_master_300x250,_
+subHeadline_txt,text,,,hasFeed,no,_
+subHeadlineTxt_size_hex_xy,text,,,hasTracker,no,_
+cta_txt,text,,,,,_
+ctaBtn_hex_xy,text,,,,,
+logoImg_wh_xy,text,,,,,
+bkgd_border_hex,text,,,,,
+clickTag1_url,text,,,,,
+clickTag2_url,text,,,,,
+logo_img,image,,,,,
+icon_img,image,,,,,
+background_img,image,,,,,

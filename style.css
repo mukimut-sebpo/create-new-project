@@ -1,0 +1,18 @@
+
+
+#main {
+    border: 1px solid #666666;
+    position: absolute; overflow: hidden;
+    width: 298px; height: 248px;
+    left: 0px; top: 0px;
+    opacity: 0;
+}
+
+.frameSize {
+    position: absolute;
+    width: 300px; height: 250px;
+    left: -1px; top: -1px;
+}
+
+
+
