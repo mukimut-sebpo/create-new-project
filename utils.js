@@ -1,5 +1,6 @@
 let adWidth, adHeight, variables;
 let fontsLoaded = false, allImagesLoaded = false;
+const notImg = RegExp('blank|null|1x1');
 
 function init() {
 	main.classList.add(checkPlatform(0), checkPlatform(1));
@@ -85,7 +86,9 @@ function trace(str) {
 	}
 }
 
-function setAdditionalCss(div, value) {
-	const propertyValue = value.split(":");
-	div.style.setProperty(propertyValue[0], propertyValue[1]);
+function setAdditionalCss(element, list , startIndex) {
+    for(let i = startIndex; i < list.length; i++) {
+        const propertyValue = list[i].split(":");
+	    element.style.setProperty(propertyValue[0], propertyValue[1]);
+    }
 }
