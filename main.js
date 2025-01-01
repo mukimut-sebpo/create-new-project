@@ -74,7 +74,11 @@ fs.writeFileSync(path.join(baseFile, 'index.html') ,getIndexContent(rlVarName));
 fs.writeFileSync(path.join(baseFile, 'richLoads', richLoadName, 'index.html'), getRlIndex());
 
 fs.copyFileSync('utils.js', path.join(baseFile, 'richLoads', richLoadName, 'js', 'utils.js'));
-fs.copyFileSync('script.js', path.join(baseFile, 'richLoads', richLoadName, 'js', 'script.js'));
+if(lines[4][5] == 'yes') {
+    fs.copyFileSync('feed_script.js', path.join(baseFile, 'richLoads', richLoadName, 'js', 'script.js'));
+} else {
+    fs.copyFileSync('regular_script.js', path.join(baseFile, 'richLoads', richLoadName, 'js', 'script.js'));
+}
 fs.copyFileSync('style.css', path.join(baseFile, 'richLoads', richLoadName, 'style.css'));
 fs.copyFileSync('blank.png', path.join(baseFile, 'richLoads', richLoadName, 'images', 'blank.png'));
 
