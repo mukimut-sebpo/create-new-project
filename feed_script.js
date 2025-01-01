@@ -8,7 +8,7 @@ myFT.on("instantads", function (e) {
     feedParams.segmentId = "";
     feedParams.feedEndpoint = variables.feed_endpoint;
     feedParams.defaultFeedEndpoint = variables.default_feed_endpoint;
-    var ftFeed = new FTFeed(myFT, feedParams);
+    const ftFeed = new FTFeed(myFT, feedParams);
     ftFeed.getFeed(feedLoaded, feedLoadError);
 
     document.fonts.ready.then(() => {
@@ -19,7 +19,7 @@ myFT.on("instantads", function (e) {
     })
 });
 
-function feedLoaded(feedArray) {
+function feedLoaded(feedData) {
 
 }
 
