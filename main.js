@@ -6,6 +6,7 @@ const lines = data.split('\n').map(line => line.split(','));
 const rlVarName = lines[0][5];
 const baseFile = lines[3][5];
 const richLoadName = lines[1][5];
+const imageList = [];
 
 let output = `FT.manifest({
     "filename": "index.html",
@@ -41,8 +42,14 @@ lines.forEach((line, index) => {
         value = value.replace('~', ',').trim();
     }
     const type = line[1];
-    if(type == 'image' && (!value || value.trim() == '')) {
-        value = 'images/blank.png';
+    // if(type == 'image' && (!value || value.trim() == '')) {
+    //     value = 'images/blank.png';
+    // }
+    if(type == 'image') {
+        imageList.push(varName)
+        if(!value || value.trim() == '') {
+            value = 'images/blank.png';
+        }
     }
 
     output += `{
@@ -114,6 +121,9 @@ function getIndexContent(varName) {
 }
 
 function getRlIndex() {
+    const imageDivs = imageList.map(e => {
+        return '<img id="' + e + '">'
+    }).join('\n\t\t');
     let text = `<!DOCTYPE html>
 <html><head>
     <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -122,6 +132,7 @@ function getRlIndex() {
 </head>
 <body>
     <div id="main">
+        ` + imageDivs + `
     </div>
 </body>
 <script src="https://cdn.flashtalking.com/frameworks/js/api/2/10/html5API.js"></script>
