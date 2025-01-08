@@ -6,7 +6,7 @@ const lines = data.split('\n').map(line => line.split(','));
 const rlVarName = lines[0][5];
 const baseFile = lines[3][5];
 const richLoadName = lines[1][5];
-const imageList = [];
+const imageList = [], divList = [], fullFrameImageList = [];
 
 let output = `FT.manifest({
     "filename": "index.html",
@@ -31,6 +31,9 @@ lines.forEach((line, index) => {
     }
 
     let varName = line[0].trim();
+    if(line[3] == 'd') {
+        divList.push(varName)
+    }
 
     if(!varName || varName.trim() == '') {
         return;
@@ -42,11 +45,14 @@ lines.forEach((line, index) => {
         value = value.replace('~', ',').trim();
     }
     const type = line[1];
-    // if(type == 'image' && (!value || value.trim() == '')) {
-    //     value = 'images/blank.png';
-    // }
+    
     if(type == 'image') {
-        imageList.push(varName)
+        if(line[3] == 'f') {
+            fullFrameImageList.push(varName)
+        }else {
+            imageList.push(varName)
+        }
+
         if(!value || value.trim() == '') {
             value = 'images/blank.png';
         }
@@ -121,9 +127,12 @@ function getIndexContent(varName) {
 }
 
 function getRlIndex() {
-    const imageDivs = imageList.map(e => {
-        return '<img id="' + e + '">'
-    }).join('\n\t\t');
+    const imageDivs = imageList.map(e => '<img id="' + e + '">').join('\n\t\t');
+    const textDivs = divList.map(e => '<div id ="' + e + '"></div>').join('\n\t\t');
+    const fullImages = fullFrameImageList.map(e => '<img id ="' + e + '" class="frameSize">').join('\n\t\t');
+
+
+
     let text = `<!DOCTYPE html>
 <html><head>
     <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -132,7 +141,9 @@ function getRlIndex() {
 </head>
 <body>
     <div id="main">
+        ` + textDivs + `
         ` + imageDivs + `
+        ` + fullImages + `
     </div>
 </body>
 <script src="https://cdn.flashtalking.com/frameworks/js/api/2/10/html5API.js"></script>

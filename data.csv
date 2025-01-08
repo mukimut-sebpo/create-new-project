@@ -1,20 +1,19 @@
-name ,type,value,,rlVarName,main_rl,_
+name ,type,value,html,rlVarName,main_rl,_
 feedEndPoint,text,4,,richloadName,tmobile_300x600,_
 feed_Toggle,text,,,clicktagCount,1,_
 introFrame_Toggle,text,,,basefileName,TMOBILE_POC_300X600,_
 introFrame_Duration,text,,,hasFeed,yes,_
-introFrame_Headline,text,,,hasTracker,no,_
+introFrame_Headline,text,,d,hasTracker,no,_
 introFrame_Headline_color,text,,,,,_
 introFrame_Heroimg,image,,,,,
-introFrame_backgroundimg,image,,,,,
-introFrame_Headline,text,,,,,
-introFrame_Headline_color,text,,,,,
-endFrame_Productname,text,,,,,
+introFrame_backgroundimg,image,,f,,,
+endFrame_Headline,text,,d,,,
 endFrame_Headline_color,text,,,,,
+endFrame_Productname,text,,,,,
 endFrame_Productimg,image,,,,,
 CTA_txt,text,,,,,
 CTA_color,text,,,,,
 CTA_img,text,,,,,
-legal_txt,text,,,,,
-endFrame_backgroundimg,text,,,,,
-logo_img,text,,,,,
+legal_txt,text,,d,,,
+endFrame_backgroundimg,image,,f,,,
+logo_img,image,,,,,
