@@ -10,7 +10,8 @@ const imageList = [], divList = [], fullFrameImageList = [];
 
 let output = `FT.manifest({
     "filename": "index.html",
-    "width": 300, "height": 250,
+    "width": ` + lines[6][5] + `, 
+    "height": ` + lines[7][5] + `,
     "clickTagCount": `
     + lines[2][5]
     + `, "hideBrowsers": ["ie8"],
