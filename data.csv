@@ -4,7 +4,7 @@ f1_headline_txt,text,,d,clicktagCount,4,_
 f1_subheadline_txt,text,,d,basefileName,2025_URBN_Anthropologie-Hybrid-Branding_300x250,_
 f1_headline_face_size_hex_alignment_xy,text,,,hasFeed,no,_
 f1_subheadline_face_size_hex_alignment_xy,text,,,hasTracker,no,_
-cta_text,text,,d,width,300,_
+cta_text,text,,d,width,500,_
 cta_txt_face_size_hex_hexHover_alignment_xy,image,,,height,350,
 cta_outlineHex_bgHex_bgHexHover,image,,,,,
 logo_width_xy,text,,,,,

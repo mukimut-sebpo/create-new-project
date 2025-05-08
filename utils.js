@@ -12,28 +12,28 @@ function init() {
 function setXY(element, xyPos) {
 	const xyList = xyPos.trim().split(",");
 	if (!xyList[1]) {
-	xyList[1] = "";
+		xyList[1] = "";
 	}
 	let x = xyList[0].trim();
 	let y = xyList[1].trim();
 
 	if (x.charAt(0) == "+") {
-	setValue("margin-left", x.substring(1));
+		setValue("margin-left", x.substring(1));
 	} else {
-	setValue("left", x);
+		setValue("left", x);
 	}
 
 	if (y.charAt(0) == "+") {
-	setValue("margin-top", y.substring(1));
+		setValue("margin-top", y.substring(1));
 	} else {
-	setValue("top", y);
+		setValue("top", y);
 	}
 
 	function setValue(valueType, value) {
-	if (!value || parseInt(value) == 0) {
-	  return;
-	}
-	element.style.setProperty(valueType, value + "px");
+		if (!value || parseInt(value) == 0) {
+	  		return;
+		}
+		element.style.setProperty(valueType, value + "px");
 	}
 }
 
@@ -57,9 +57,6 @@ function checkPlatform(item) {
 	if (item == 0) {
 		return a[0];
 	}
-
-	var MSIE = window.navigator.userAgent.indexOf("MSIE ");
-	var Edge = window.navigator.userAgent.indexOf("Edge/");
 
 	if (navigator.userAgent.toLowerCase().indexOf("chrome") > -1) {
 		a[1] = "chrome";
@@ -86,7 +83,7 @@ function trace(str) {
 	}
 }
 
-function setAdditionalCss(element, list , startIndex) {
+function setAdditionalCss(element, list, startIndex) {
     for(let i = startIndex; i < list.length; i++) {
         const propertyValue = list[i].split(":");
 	    element.style.setProperty(propertyValue[0], propertyValue[1]);

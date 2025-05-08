@@ -7,11 +7,13 @@ const rlVarName = lines[0][5];
 const baseFile = lines[3][5];
 const richLoadName = lines[1][5];
 const imageList = [], divList = [], fullFrameImageList = [];
+const width = parseInt(lines[6][5]);
+const height = parseInt(lines[7][5]);
 
 let output = `FT.manifest({
     "filename": "index.html",
-    "width": ` + lines[6][5] + `, 
-    "height": ` + lines[7][5] + `,
+    "width": ` + width + `, 
+    "height": ` + height + `,
     "clickTagCount": `
     + lines[2][5]
     + `, "hideBrowsers": ["ie8"],
@@ -75,6 +77,21 @@ output += `
     ]
 })`;
 
+const cssContent = `#main {
+    border: 1px solid #666666;
+    position: absolute; overflow: hidden;
+    width: ` + (width - 2) + `px; height: ` + (height - 2) + `px;
+    left: 0px; top: 0px;
+    opacity: 0;
+}
+
+.frameSize {
+    position: absolute;
+    width: ` + width + `px; height: ` + height + `px;
+    left: -1px; top: -1px;
+}
+`;
+
 
 
 fs.mkdirSync(baseFile);
@@ -84,8 +101,9 @@ fs.mkdirSync(path.join(baseFile, 'richLoads', richLoadName, 'js'));
 fs.mkdirSync(path.join(baseFile, 'richLoads', richLoadName, 'images'));
 
 fs.writeFileSync(path.join(baseFile, 'manifest.js') , output);
-fs.writeFileSync(path.join(baseFile, 'index.html') ,getIndexContent(rlVarName));
+fs.writeFileSync(path.join(baseFile, 'index.html'), getIndexContent(rlVarName));
 fs.writeFileSync(path.join(baseFile, 'richLoads', richLoadName, 'index.html'), getRlIndex());
+fs.writeFileSync(path.join(baseFile, 'richLoads', richLoadName, 'style.css'), cssContent);
 
 fs.copyFileSync('utils.js', path.join(baseFile, 'richLoads', richLoadName, 'js', 'utils.js'));
 if(lines[4][5] == 'yes') {
@@ -93,7 +111,7 @@ if(lines[4][5] == 'yes') {
 } else {
     fs.copyFileSync('regular_script.js', path.join(baseFile, 'richLoads', richLoadName, 'js', 'script.js'));
 }
-fs.copyFileSync('style.css', path.join(baseFile, 'richLoads', richLoadName, 'style.css'));
+// fs.copyFileSync('style.css', path.join(baseFile, 'richLoads', richLoadName, 'style.css'));
 fs.copyFileSync('blank.png', path.join(baseFile, 'richLoads', richLoadName, 'images', 'blank.png'));
 
 
@@ -108,7 +126,7 @@ function getIndexContent(varName) {
             body{margin: 0px;padding: 0px;}
 
             #container{
-                width: 300px; height: 250px; position: absolute; background-color: transparent; opacity:0;
+                width: ` + width + `px; height: ` + height + `px; position: absolute; background-color: transparent; opacity:0;
             }
 
             #Richload1 {

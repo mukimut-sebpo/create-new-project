@@ -24,7 +24,7 @@ function setText(element, text, styles) {
     // element.classList.add(checkPlatform(0), checkPlatform(1))
 
     const styleList = styles.split('|');
-    !!text.trim() ? element.innerHTML = text : null;
+    element.innerHTML = text;
 
     element.style.fontSize = styleList[0] + 'px';
     element.style.color = styleList[1];
